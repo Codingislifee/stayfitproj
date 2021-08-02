@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Stay-fit</title>
+    <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet'>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: #c75555;
+    font-family: "Itim", sans-serif;
+}
+#me{
+    border: 0px;
+    background-color: #c75555;
+}
+
+
+#j2{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    border: 0px;
+}
+
+.nav-links {
+    display: flex;
+    /*display: none;*/
+    justify-content: space-around;
+    width: 30%;
+}
+
+
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    color: rgb(226, 226, 226);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 14px;
+    
+  
+
+}
+
+.burger {
+    display: none;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: rgb(226, 226, 226);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 1024px) {
+    .nav-links {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+    
+    .nav-links {
+        position: fixed;
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        background-color: #5D4954;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+    
+    .nav-links li {
+        opacity: 0;
+    }
+    
+    .burger {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+.nav-active {
+        transform: translateX(0%);
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+h1{
+    
+    font-family: 'Inconsolata';
+}
+#firstpage{
+    background-color: red;
+   
+    height: 100%;
+}
+     
+
+#secondpage{
+    background-color: azure;
+    height: 100%;
+}
+#login{
+    border-radius: 50%;
+    padding: 0 16px;
+            /*-webkit-border-radius: 4px;*/
+            
+            line-height: 36px;
+            border: 0px;
+            cursor: pointer;
+}
+#yt-sub{
+            background-color:#D93025;
+            display: inline;
+            color: #fff;
+            padding: 0 16px;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
+            line-height: 36px;
+            font-family: 'Google Sans',Roboto,Arial,sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            border: 0px;
+            }
+            
+            #yt-sub:hover{
+                line-height: 38px;
+                padding: 0 18px; 
+            }
+        
+    
+        #color:hover{
+            box-shadow: 0 20px 20px 0 rgb(255, 196, 0);
+            border-left: 4px solid yellow;
+            border-right: 4px solid yellow;
+            border-bottom: 4px solid yellow;
+            border-top: 4px solid yellow;
+           
+            }
+            ::-webkit-scrollbar {
+    background: transparent;
+    height: 8px;
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    border: none;
+    box-shadow: none;
+    background: #dadce0;
+    border-radius: 4px;
+    min-height: 40px;
+}
+::-webkit-scrollbar-track {
+    margin: 3px 0;}
+
+
+        #j{
+            border-radius: 50%;
+            height: 150px;
+            width: 150px;
+        }
+        #subs{
+            cursor: pointer;
+        }
+        #color{
+            background-color: #fff;
+            border-radius: 15px;
+            border: 0.1px solid orangered;
+            display: flex;
+            padding: 20px 30px;
+            position: relative;
+            margin: 100px 0;
+            z-index: 10;
+            display: inline-block;
+            height: 300px;
+            width: 250px;
+            cursor: pointer;
+            
+            position: relative;
+        }
+        #firste{
+            background-color: azure;
+            border: 0;
+        }
+
+        .footer {
+    color:white;
+    padding: 20px;
+    text-align: center;
+    background:grey;
+  }
+
+  a{
+      text-decoration: none;
+      justify-content: space-around;
+      color: azure;
+  }
+  
+  
+
+    </style>
+</head>
+
+
+<script>
+    function navSlide() {
+    const burger = document.querySelector(".burger");
+    const nav = document.querySelector(".nav-links");
+    const navLinks = document.querySelectorAll(".nav-links li");
+    
+    burger.addEventListener("click",function() {
+        //Toggle Nav
+        nav.classList.toggle("nav-active");
+        
+        //Animate Links
+        navLinks.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = ""
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 5+ 0.5}s`;
+            }
+        });
+        //Burger Animation
+        burger.classList.toggle("toggle");
+    });
+    
+}
+
+navSlide();
+</script>
+
+</html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <!--img src="sign.JPG" height="50px"-->
+            <button onclick="window.location.href='C:\Anton\CSS\CSSHTML\.vscode\mywebsite\fifaforms.html';" id="me">
+                <img src="https://lh3.googleusercontent.com/-7vnKO4Po8vg/UwZcDXrBBzI/AAAAAAAAAH4/_vvUkiueQPgzPrj6sHvB_Fe-a8BGltIWwCJEEGAYYCw/s512/23.FlexedArm_640x442.gif" id="j2">
+                <!--img src="https://www.google.com/chrome/static/images/chrome-logo.svg"-->
+            </button>
+        </div>
+        <button onclick="window.location.href='';" id="login">Log in</button>
+        
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <!--li><a href="#">Work</a></li-->
+            <li><a href="#">Projects</a></li>
+            
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+       
+    </nav>
+    <center>
+    <section id="firstpage">
+        
+        <img src="https://cdn0.iconfinder.com/data/icons/fitness-activities/256/Stay_Fit-1024.png" height="50%">
+        <h1>Stay Fit.</h1>  
+    </section>
+    <section id="secondpage">
+    
+    <button id="firste" onclick= "window.location.href='me.html';">
+    <div id="color">
+        <div>  
+       <img src="goals_loseweight.svg" id="j">
+       <h3> </h3><h1></h1>
+       
+       
+       </div>
+       
+       </div>
+       </button>
+       <div id="color">
+        <div>  
+       <img src="goals_muscle.svg" id="j">
+       <h3> </h3><h1></h1>
+       
+       
+       </div>
+       
+       </div>
+    </button>
+       <div id="color">
+        <div>  
+       <img src="https://www.dnafit.com/assets/zeus/nav/goals_health.svg" id="j">
+       <h3> </h3><h1></h1>
+       
+       
+       </div>
+       
+       </div>
+    </button>
+    </section>
+    </center>
+     
+</body>
+<div class="footer">
+<a href="Stayfit.com">Stayfit</a><br>
+  <a href="mywebsite.html">visit our website</a><br>
+  <a href="fifaforms.html">Login</a><br>
+  <a href="#">Privacy Policy</a>
+</div>
+</html>
+   
